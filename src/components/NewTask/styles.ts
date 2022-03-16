@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   z-index: 2;
 `;
 
-export const CardAddTask = styled.section`
+export const CardAddTask = styled.div`
   position: absolute;
-  top: 217px;
+  top: -200px;
+  right: 220px;
   width: 315px;
   height: 294px;
 

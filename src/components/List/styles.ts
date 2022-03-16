@@ -14,10 +14,10 @@ export const Container = styled.div`
 
   background: #0047ff;
   border-radius: 10px;
-  z-index: 0;
+  z-index: 1;
 `;
 
-export const InfoList = styled.section`
+export const InfoList = styled.div`
   display: flex;
   flex-direction: column;
   margin: 24px 0 90px 24px;

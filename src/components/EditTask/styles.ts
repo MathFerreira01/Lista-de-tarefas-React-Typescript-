@@ -4,12 +4,13 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  z-index: 999;
 `;
 
 export const CardEditTask = styled.section`
   position: absolute;
-  top: 217px;
+  top: -80px;
+  right: 340px;
   width: 315px;
   height: 367px;
 

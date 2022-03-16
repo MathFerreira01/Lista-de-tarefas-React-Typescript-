@@ -13,7 +13,17 @@ import {
   SaveTask,
 } from "./styles";
 
-const EditTask: React.FC = () => {
+interface baseEdit {
+  isEditVisible: boolean;
+  toggleEdit(): void;
+}
+
+const EditTask: React.FC<baseEdit> = ({isEditVisible, toggleEdit}) => {
+
+  if (!isEditVisible) {
+    return null;
+  }
+
   return (
     <Container>
       <CardEditTask>
@@ -46,7 +56,7 @@ const EditTask: React.FC = () => {
           </Concluded>
         </StateTask>
         <SaveTask>
-          <span>CANCELAR</span>
+          <span onClick={toggleEdit}>CANCELAR</span>
           <span>SALVAR</span>
         </SaveTask>
       </CardEditTask>

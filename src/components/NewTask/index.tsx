@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 
 import {
@@ -12,14 +12,13 @@ import {
 
 interface baseModal {
   isModalVisible: boolean;
-  onBackdropClick: () => void;
-  div: string;
+  toggleModel(): void;
 }
 
-const NewTask: React.FC<baseModal> = ({onBackdropClick, isModalVisible, div}) => {
-
-  if(isModalVisible) {
-    return null
+const NewTask: React.FC<baseModal> = ({ isModalVisible, toggleModel }) => {
+  
+  if (!isModalVisible) {
+    return null;
   }
 
   return (
@@ -28,24 +27,25 @@ const NewTask: React.FC<baseModal> = ({onBackdropClick, isModalVisible, div}) =>
         <TitleNewTask>
           <h3>Criar tarefa</h3>
         </TitleNewTask>
+
         <NameTask>
           <TextField
-            id="outlined-helperText"
             label="Nome da tarefa"
             placeholder="Nome"
-            style={{width: '265px'}}
+            style={{ width: "265px" }}
           />
         </NameTask>
+
         <DescriptionTask>
           <TextField
-            id="outlined-helperText"
             label="Descrição da tarefa"
             placeholder="Descrição da tarefa"
-            style={{width: '265px'}}
+            style={{ width: "265px" }}
           />
         </DescriptionTask>
+
         <SaveTask>
-          <span>CANCELAR</span>
+          <span onClick={toggleModel}>CANCELAR</span>
           <span>SALVAR</span>
         </SaveTask>
       </CardAddTask>

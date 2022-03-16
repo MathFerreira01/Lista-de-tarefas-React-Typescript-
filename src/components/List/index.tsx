@@ -13,12 +13,12 @@ import {
 
 import InputList from "../InputList";
 import NewTask from "../NewTask";
+import CardOverlay from '../CardOverlay'
 
-interface IList {
+export interface IList {
   name: string;
   description: string;
 }
-
 
 const List: React.FC = () => {
   const [lists, setLists] = useState<IList[]>([
@@ -38,32 +38,46 @@ const List: React.FC = () => {
     ]);
   };
 
-  const [isModalVisible, setIsModalVisible] = useState(true)
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const toggleModal = () => {
-    setIsModalVisible(wasModalVisible => wasModalVisible)
-  }
-  
+  const toggleModel = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+
+  const toggleOverlay = () => {
+    setIsOverlayVisible(!isOverlayVisible);
+  };
+
   return (
     <>
       <InputList />
-      <Container>
-        <InfoList>
-          <strong>Nome</strong>
-          <span>Descrição de tarefa.</span>
-        </InfoList>
-        <ButtonConcluded>
-          <Button
-            variant="contained"
-            style={{ background: "#FFFFFF", color: "#000000" }}
-          >
-            Concluído
-          </Button>
-        </ButtonConcluded>
-        <EditIcon>
-          <MoreVertIcon style={{ color: "#FFFFFF" }} />
-        </EditIcon>
-      </Container>
+      {lists.map((list) => (
+        <Container>
+          <InfoList>
+            <strong>Nome</strong>
+            <span>Descrição de tarefa.</span>
+          </InfoList>
+
+          <ButtonConcluded>
+            <Button
+              variant="contained"
+              style={{ background: "#FFFFFF", color: "#000000" }}
+            >
+              Concluído
+            </Button>
+          </ButtonConcluded>
+
+          <EditIcon>
+            <MoreVertIcon 
+            onClick={toggleOverlay}
+            style={{ color: "#FFFFFF" }} />
+          </EditIcon>
+          <CardOverlay toggleOverlay={toggleOverlay} isOverlayVisible={isOverlayVisible}/>
+        </Container>
+      ))}
+
       <AddTasks>
         <Button
           type="button"
@@ -74,11 +88,11 @@ const List: React.FC = () => {
             width: "150px",
             height: "46px",
           }}
-          onClick={toggleModal}
+          onClick={toggleModel}
         >
           + Nova tarefa
-          <NewTask div="Login" isModalVisible={isModalVisible} onBackdropClick={toggleModal}/>
         </Button>
+        <NewTask toggleModel={toggleModel} isModalVisible={isModalVisible} />
       </AddTasks>
     </>
   );
