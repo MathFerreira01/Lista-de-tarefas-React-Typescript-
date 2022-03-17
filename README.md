@@ -8,3 +8,4 @@ As imagens abaixo mostram o layout do projeto finalizado.
 ![image](https://user-images.githubusercontent.com/93415391/158717597-df01a8fd-47cc-435a-84e1-3699c5d1fe83.png)
 
 Ao finalizar o layout do projeto, comecei a implementar as funções do projeto, e foi nesta parte que tive diculdade. 
+Foi criado um modal com useState do Hook, para que ao clicar nos botões "+ Nova tarefa" e o icon "moreVert" podessem abrir os components NewTaskW e EditTask, porém ao abrir, não consegui aplicar a função para criar uma nova tarefa ao clicar no botão "Salvar" não consegui fazer o export da função como props para outro component
