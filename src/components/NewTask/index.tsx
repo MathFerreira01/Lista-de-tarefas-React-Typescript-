@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
+import List, { InfoList } from '../List'
 
 import {
   Container,
@@ -15,8 +16,14 @@ interface baseModal {
   toggleModel(): void;
 }
 
+
+
 const NewTask: React.FC<baseModal> = ({ isModalVisible, toggleModel }) => {
-  
+
+  const [task, setTask] = useState<string>('')
+
+  const [todoList, setTodoList] = useState([])
+
   if (!isModalVisible) {
     return null;
   }
@@ -33,6 +40,8 @@ const NewTask: React.FC<baseModal> = ({ isModalVisible, toggleModel }) => {
             label="Nome da tarefa"
             placeholder="Nome"
             style={{ width: "265px" }}
+            value={task}
+            onChange={(event) => setTask(event.target.value)}
           />
         </NameTask>
 

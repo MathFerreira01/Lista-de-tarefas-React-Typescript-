@@ -15,20 +15,20 @@ import InputList from "../InputList";
 import NewTask from "../NewTask";
 import CardOverlay from '../CardOverlay'
 
-export interface IList {
+export interface InfoList {
   name: string;
   description: string;
 }
 
-const List: React.FC = () => {
-  const [lists, setLists] = useState<IList[]>([
+const List: React.FC<InfoList> = ({name, description}) => {
+  const [lists, setLists] = useState<InfoList[]>([
     {
       name: "Matheus",
       description: "Sua tarefa",
     },
   ]);
 
-  const add = () => {
+  function add () {
     setLists((prevState) => [
       ...prevState,
       {
@@ -56,8 +56,8 @@ const List: React.FC = () => {
       {lists.map((list) => (
         <Container>
           <InfoList>
-            <strong>Nome</strong>
-            <span>Descrição de tarefa.</span>
+            <strong>{name}</strong>
+            <span>{description}</span>
           </InfoList>
 
           <ButtonConcluded>
@@ -99,3 +99,4 @@ const List: React.FC = () => {
 };
 
 export default List;
+
