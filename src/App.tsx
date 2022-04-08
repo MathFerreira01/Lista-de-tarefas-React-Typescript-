@@ -8,7 +8,7 @@ const App: React.FC = () => {
   return (
     <div>
       <Menu/>
-      <List name={''} description={''}/>
+      <List/>
   <GlobalStyle/>
     </div>
   )

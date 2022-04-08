@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import List, { InfoList } from '../List'
 
 import {
   Container,
@@ -11,18 +10,16 @@ import {
   SaveTask,
 } from "./styles";
 
-interface baseModal {
-  isModalVisible: boolean;
-  toggleModel(): void;
-}
+import { baseModal } from "../../types";
 
+function NewTask ({ isModalVisible, toggleModel}: baseModal) {
 
-
-const NewTask: React.FC<baseModal> = ({ isModalVisible, toggleModel }) => {
-
-  const [task, setTask] = useState<string>('')
-
-  const [todoList, setTodoList] = useState([])
+  const [inputData, setInputData] = useState<{ name: string; descricao: string; }[]> ([
+    {
+      name: String(""),
+      descricao: String(""),
+    },
+  ])
 
   if (!isModalVisible) {
     return null;
@@ -38,18 +35,26 @@ const NewTask: React.FC<baseModal> = ({ isModalVisible, toggleModel }) => {
         <NameTask>
           <TextField
             label="Nome da tarefa"
+            type="text"
+            id="name"
+            name="name"
             placeholder="Nome"
             style={{ width: "265px" }}
-            value={task}
-            onChange={(event) => setTask(event.target.value)}
+            value={inputData}
+            
           />
         </NameTask>
 
         <DescriptionTask>
           <TextField
             label="Descrição da tarefa"
+            name="descricao"
+            id="descricao"
+            type="text"
             placeholder="Descrição da tarefa"
             style={{ width: "265px" }}
+            value={inputData}
+            
           />
         </DescriptionTask>
 

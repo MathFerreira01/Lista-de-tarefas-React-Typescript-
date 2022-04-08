@@ -1,81 +1,34 @@
 import React, { useState } from "react";
 
 import Button from "@mui/material/Button";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-import {
-  Container,
-  InfoList,
-  ButtonConcluded,
-  EditIcon,
-  AddTasks,
-} from "./styles";
+
+import {AddTasks} from "./styles";
 
 import InputList from "../InputList";
 import NewTask from "../NewTask";
-import CardOverlay from '../CardOverlay'
 
-export interface InfoList {
-  name: string;
-  description: string;
-}
+import { ITypes } from "../../types";
+import Description from "./Description";
 
-const List: React.FC<InfoList> = ({name, description}) => {
-  const [lists, setLists] = useState<InfoList[]>([
-    {
-      name: "Matheus",
-      description: "Sua tarefa",
-    },
-  ]);
+const List: React.FC = () => {
 
-  function add () {
-    setLists((prevState) => [
-      ...prevState,
-      {
-        name: "",
-        description: "",
-      },
-    ]);
-  };
-
+  const [lists, setLists] = useState<ITypes[]> ([])
+    
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModel = () => {
     setIsModalVisible(!isModalVisible);
   };
 
-  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-
-  const toggleOverlay = () => {
-    setIsOverlayVisible(!isOverlayVisible);
-  };
-
   return (
     <>
       <InputList />
-      {lists.map((list) => (
-        <Container>
-          <InfoList>
-            <strong>{name}</strong>
-            <span>{description}</span>
-          </InfoList>
-
-          <ButtonConcluded>
-            <Button
-              variant="contained"
-              style={{ background: "#FFFFFF", color: "#000000" }}
-            >
-              Concluído
-            </Button>
-          </ButtonConcluded>
-
-          <EditIcon>
-            <MoreVertIcon 
-            onClick={toggleOverlay}
-            style={{ color: "#FFFFFF" }} />
-          </EditIcon>
-          <CardOverlay toggleOverlay={toggleOverlay} isOverlayVisible={isOverlayVisible}/>
-        </Container>
+      {lists.map((list, index) => (
+        <Description 
+          key={index}
+          {...list}
+          />
       ))}
 
       <AddTasks>

@@ -48,7 +48,7 @@ export const ButtonConcluded = styled.div`
 
 export const EditIcon = styled.div`
   position: relative;
-  left: 87%;
+  left: 72%;
   top: -40px;
   
   width: 24px;
