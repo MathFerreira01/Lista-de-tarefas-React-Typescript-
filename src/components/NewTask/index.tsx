@@ -11,15 +11,39 @@ import {
 } from "./styles";
 
 import { baseModal } from "../../types";
+import Description from "../List/Description";
 
-function NewTask ({ isModalVisible, toggleModel}: baseModal) {
+interface Types {
+  name: string;
+  description: string;
+}
 
-  const [inputData, setInputData] = useState<{ name: string; descricao: string; }[]> ([
-    {
-      name: String(""),
-      descricao: String(""),
-    },
-  ])
+function NewTask({ isModalVisible, toggleModel }: baseModal) {
+
+  const [lists, setLists] = useState<string[]>([]);
+  const [taskName, setTaskName] = useState<string>("");
+  const [descriptionTask, setDescriptionTask] = useState<string>("");
+
+  const handleChangeSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(taskName);
+  };
+
+  const handleChangeNameTask = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTaskName(event.target.value);
+  };
+
+  const handleChangeDescriptionTask = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setDescriptionTask(event.target.value);
+  };
+
+  const addNewTask = () => {
+    const itensCopy = Array.from(lists);
+    itensCopy.push(taskName, descriptionTask);
+    setLists(itensCopy);
+  }
 
   if (!isModalVisible) {
     return null;
@@ -27,7 +51,7 @@ function NewTask ({ isModalVisible, toggleModel}: baseModal) {
 
   return (
     <Container>
-      <CardAddTask>
+      <CardAddTask onSubmit={handleChangeSubmit}>
         <TitleNewTask>
           <h3>Criar tarefa</h3>
         </TitleNewTask>
@@ -40,8 +64,8 @@ function NewTask ({ isModalVisible, toggleModel}: baseModal) {
             name="name"
             placeholder="Nome"
             style={{ width: "265px" }}
-            value={inputData}
-            
+            value={taskName}
+            onChange={handleChangeNameTask}
           />
         </NameTask>
 
@@ -53,18 +77,23 @@ function NewTask ({ isModalVisible, toggleModel}: baseModal) {
             type="text"
             placeholder="Descrição da tarefa"
             style={{ width: "265px" }}
-            value={inputData}
-            
+            value={descriptionTask}
+            onChange={handleChangeDescriptionTask}
           />
         </DescriptionTask>
 
         <SaveTask>
           <span onClick={toggleModel}>CANCELAR</span>
-          <span>SALVAR</span>
+          <span onClick={addNewTask}>SALVAR</span>
         </SaveTask>
+
+        {lists.map((list, index) => (
+          <Description key={index} {...list} />
+        ))}
+
       </CardAddTask>
     </Container>
   );
-};
+}
 
 export default NewTask;

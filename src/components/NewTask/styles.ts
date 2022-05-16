@@ -7,7 +7,7 @@ export const Container = styled.section`
   z-index: 2;
 `;
 
-export const CardAddTask = styled.div`
+export const CardAddTask = styled.form`
   position: absolute;
   top: -200px;
   right: 220px;

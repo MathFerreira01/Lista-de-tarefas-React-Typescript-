@@ -8,13 +8,8 @@ import {AddTasks} from "./styles";
 import InputList from "../InputList";
 import NewTask from "../NewTask";
 
-import { ITypes } from "../../types";
-import Description from "./Description";
-
 const List: React.FC = () => {
 
-  const [lists, setLists] = useState<ITypes[]> ([])
-    
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModel = () => {
@@ -24,13 +19,7 @@ const List: React.FC = () => {
   return (
     <>
       <InputList />
-      {lists.map((list, index) => (
-        <Description 
-          key={index}
-          {...list}
-          />
-      ))}
-
+   
       <AddTasks>
         <Button
           type="button"
