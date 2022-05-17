@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
+  height: 100%;
+  width: 100%;
+
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 2;
 `;
 
 export const CardAddTask = styled.form`
-  position: absolute;
-  top: -200px;
-  right: 220px;
   width: 315px;
   height: 294px;
 
@@ -21,11 +21,8 @@ export const CardAddTask = styled.form`
 export const TitleNewTask = styled.div`
   display: flex;
   align-items: flex-start;
-  margin-left: 24px;
-  margin-bottom: 25px;
-  top: 20px;
-  position: absolute;
-
+  padding: 1rem;
+  
   > h3 {
     font-family: 'Montserrat';
     font-weight: 600;
@@ -33,41 +30,24 @@ export const TitleNewTask = styled.div`
     color: #000000;
   }
 `;
-export const NameTask = styled.div`
+export const ContainerInputs = styled.div`
   display: flex;
-  align-items: flex-start;
-  margin-left: 25px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  position: relative;
-  top: 71px;
-`;
-
-export const DescriptionTask = styled.div`
-  display: flex;
-  align-items: flex-start;
-  margin-left: 25px;
-  margin-top: 34px;
-
-  position: relative;
-  top: 71px;
+  div {
+    margin: 0.3rem;
+  }
 `;
 
 export const SaveTask = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
- 
-  position: absolute;
-  
-  left: 132px;
-  top: 252px;
-
-  width: 84px;
-  height: 16px;
+  justify-content: space-around;
+  margin-top: 1rem;
 
   > span {
-    margin: 5px;
-
     font-family: 'Montserrat';
     font-weight: 600;
     font-size: 14px;

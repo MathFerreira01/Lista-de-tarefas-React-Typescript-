@@ -5,21 +5,14 @@ import {
   Container,
   CardAddTask,
   TitleNewTask,
-  NameTask,
-  DescriptionTask,
+  ContainerInputs,
   SaveTask,
 } from "./styles";
 
 import { baseModal } from "../../types";
-import Description from "../List/Description";
-
-interface Types {
-  name: string;
-  description: string;
-}
+import Description from "../Description";
 
 function NewTask({ isModalVisible, toggleModel }: baseModal) {
-
   const [lists, setLists] = useState<string[]>([]);
   const [taskName, setTaskName] = useState<string>("");
   const [descriptionTask, setDescriptionTask] = useState<string>("");
@@ -41,9 +34,9 @@ function NewTask({ isModalVisible, toggleModel }: baseModal) {
 
   const addNewTask = () => {
     const itensCopy = Array.from(lists);
-    itensCopy.push(taskName, descriptionTask);
+    itensCopy.push(taskName);
     setLists(itensCopy);
-  }
+  };
 
   if (!isModalVisible) {
     return null;
@@ -56,41 +49,42 @@ function NewTask({ isModalVisible, toggleModel }: baseModal) {
           <h3>Criar tarefa</h3>
         </TitleNewTask>
 
-        <NameTask>
-          <TextField
-            label="Nome da tarefa"
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Nome"
-            style={{ width: "265px" }}
-            value={taskName}
-            onChange={handleChangeNameTask}
-          />
-        </NameTask>
+        <ContainerInputs>
+          <div>
+            <TextField
+              label="Nome da tarefa"
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Nome"
+              style={{ width: "265px" }}
+              value={taskName}
+              onChange={handleChangeNameTask}
+            />
+          </div>
 
-        <DescriptionTask>
-          <TextField
-            label="Descrição da tarefa"
-            name="descricao"
-            id="descricao"
-            type="text"
-            placeholder="Descrição da tarefa"
-            style={{ width: "265px" }}
-            value={descriptionTask}
-            onChange={handleChangeDescriptionTask}
-          />
-        </DescriptionTask>
-
-        <SaveTask>
-          <span onClick={toggleModel}>CANCELAR</span>
-          <span onClick={addNewTask}>SALVAR</span>
-        </SaveTask>
+          <div>
+            <TextField
+              label="Descrição da tarefa"
+              name="descricao"
+              id="descricao"
+              type="text"
+              placeholder="Descrição da tarefa"
+              style={{ width: "265px" }}
+              value={descriptionTask}
+              onChange={handleChangeDescriptionTask}
+            />
+          </div>
+        </ContainerInputs>
 
         {lists.map((list, index) => (
           <Description key={index} {...list} />
         ))}
 
+        <SaveTask>
+          <span onClick={toggleModel}>CANCELAR</span>
+          <span onClick={addNewTask}>SALVAR</span>
+        </SaveTask>
       </CardAddTask>
     </Container>
   );

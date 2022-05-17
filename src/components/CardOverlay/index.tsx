@@ -4,7 +4,7 @@ import { Container, LineEdit, LineDelete } from './styles';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
-import EditTask from '../EditTask'
+import EditTask from '../../views/EditTask'
 
 interface baseOverlayModal {
   isOverlayVisible: boolean;

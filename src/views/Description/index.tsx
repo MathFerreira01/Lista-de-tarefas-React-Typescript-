@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import CardOverlay from "../../CardOverlay";
+import CardOverlay from "../../components/CardOverlay";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Button from "@mui/material/Button";
 
-import { Container, InfoList, ButtonConcluded, EditIcon } from "../styles";
+import { Container, InfoList, ButtonConcluded, EditIcon } from "./styles";
 
 const Description: React.FC = () => {
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
@@ -14,6 +14,7 @@ const Description: React.FC = () => {
 
   return (
     <Container>
+      <div>
       <InfoList>
         <strong>Name</strong>
         <span>Description</span>
@@ -35,6 +36,7 @@ const Description: React.FC = () => {
         toggleOverlay={toggleOverlay}
         isOverlayVisible={isOverlayVisible}
       />
+      </div>
     </Container>
   );
 };
