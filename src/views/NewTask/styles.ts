@@ -8,6 +8,8 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  margin-top: 1rem;
 `;
 
 export const CardAddTask = styled.form`

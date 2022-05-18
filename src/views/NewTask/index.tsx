@@ -10,10 +10,17 @@ import {
 } from "./styles";
 
 import { baseModal } from "../../types";
-import Description from "../Description";
+
+interface TaskElements {
+  name: string;
+  description: string;
+}
 
 function NewTask({ isModalVisible, toggleModel }: baseModal) {
-  const [lists, setLists] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<TaskElements>({
+    name: "",
+    description: "",
+  });
   const [taskName, setTaskName] = useState<string>("");
   const [descriptionTask, setDescriptionTask] = useState<string>("");
 
@@ -30,12 +37,6 @@ function NewTask({ isModalVisible, toggleModel }: baseModal) {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setDescriptionTask(event.target.value);
-  };
-
-  const addNewTask = () => {
-    const itensCopy = Array.from(lists);
-    itensCopy.push(taskName);
-    setLists(itensCopy);
   };
 
   if (!isModalVisible) {
@@ -77,14 +78,11 @@ function NewTask({ isModalVisible, toggleModel }: baseModal) {
           </div>
         </ContainerInputs>
 
-        {lists.map((list, index) => (
-          <Description key={index} {...list} />
-        ))}
-
         <SaveTask>
           <span onClick={toggleModel}>CANCELAR</span>
-          <span onClick={addNewTask}>SALVAR</span>
+          <span>SALVAR</span>
         </SaveTask>
+
       </CardAddTask>
     </Container>
   );

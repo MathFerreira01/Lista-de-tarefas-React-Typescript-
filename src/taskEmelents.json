@@ -1,0 +1,19 @@
+{
+    "campos": [
+      {
+        "name": "Estudos",
+        "description": "estudar react por 3 meses",
+        "id": 1
+      },
+      {
+        "name": "Lazer",
+        "description": "Passear com a famlia por 10 dias",
+        "id": 2
+      },
+      {
+        "name": "Tarefas domésticas",
+        "description": "fazer as tarefas de casa",
+        "id": 3
+      }   
+    ]
+  }
